@@ -12,8 +12,8 @@ const schema=mongoose.Schema(
         "Sid":{type:String,required:true},
         "Fid":{type:String,required:true},
         "F_reason":{type:String,required:true},
-        "S_reason":{type:String,required:true},
-        
+        "S_reason":{type:String,required:true}
+
     }
 )
 
