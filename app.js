@@ -9,12 +9,27 @@ const app=express()
 app.use(cors())
 app.use(express.json())
 
-const generateHashpassword=async(password)=>{
+const generateHashPassword=async(password)=>{
     const salt=await bcrypt.genSalt(10)
     return bcrypt.hash(password,salt)
 }
 
+
 mongoose.connect("mongodb+srv://jophine:jophinepaul@cluster0.oyyvgui.mongodb.net/LeaveDB?retryWrites=true&w=majority&appName=Cluster0")
+
+
+app.post("/studsignup",async (req,res)=>{
+    let input=req.body
+    let hashedPassword=await generateHashPassword(input.student_password)
+    console.log(hashedPassword)
+    input.student_password=hashedPassword
+    let absent = new absentModel(input)
+    absent.save()
+    res.json({"status":"success"})
+})
+
+
+
 
 
 app.post("/HodSignIn",(req,res)=>
