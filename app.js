@@ -5,7 +5,7 @@ const { absentModel } = require("./models/Absent")
 const { hodModel } = require("./models/Hod")
 const { facultyLoginModel } = require("./models/Faculty")
 const { StudLeavesModel } = require("./models/StudLeave")
-const {FacultyLeavesModel}=require("./models/FacultyLeave")
+const { FacultyLeavesModel } = require("./models/FacultyLeave")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 
@@ -184,25 +184,46 @@ app.post("/facultyaddleave", (req, res) => {
 
 
 
-app.get("/viewStud",(req,res)=>{
+app.get("/viewStud", (req, res) => {
     StudLeavesModel.find().then(
-        (data=>{
+        (data => {
             res.json(data)
         })
     )
-    })
+})
 
 
-    
-app.get("/viewFaculty",(req,res)=>{
+
+app.get("/viewFaculty", (req, res) => {
     FacultyLeavesModel.find().then(
-        (data=>{
+        (data => {
             res.json(data)
         })
     )
-    })
+})
 
 
+app.post("/searchleavestud", (req, res) => {
+    let input = req.body
+    StudLeavesModel.find(input)
+        .then(
+            (data) => {
+                res.json(data)
+            }).catch((error) => {
+                res.json(error.message)
+            })
+})
+
+app.post("/searchleavefaculty",(req,res)=> {
+    let input = req.body
+    FacultyLeavesModel.find(input)
+    .then(
+        (data) => {
+            res.json(data)
+            }).catch((error) => {
+                res.json(error.message)
+                })
+})
 
 app.listen(8080, () => {
     console.log("started")
