@@ -2,7 +2,7 @@ const express=require("express")
 const cors=require("cors")
 const mongoose=require("mongoose")
 const{absentModel}=require("./models/Absent")
-const{hodModel}=require("./models/Absent")
+const{hodModel}=require("./models/Hod")
 const{StudLeavesModel}=require("./models/Absent")
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcryptjs")
@@ -49,7 +49,7 @@ app.post("/Hodsignup",async (req,res)=>{
 app.post("/HodSignIn",(req,res)=>
 {
     let input=req.body
-    absentModel.find({"HOD_username":req.body.HOD_username}).then(
+    hodModel.find({"HOD_username":req.body.HOD_username}).then(
         (response)=>{
             if(response.length>0)
                 {
