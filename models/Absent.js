@@ -1,4 +1,6 @@
 const mongoose = require("mongoose")
+
+
 const schema = mongoose.Schema(
     {
         "student_username": { type: String, required: true },
@@ -7,7 +9,6 @@ const schema = mongoose.Schema(
 
     }
 )
-
 let absentModel = mongoose.model("absenties", schema)
 module.exports = { absentModel }
 
@@ -20,7 +21,6 @@ const hod_schema = mongoose.Schema(
         "HOD_Password": { type: String, required: true }
     }
 )
-
 let hodModel = mongoose.model("Hod", hod_schema)
 module.exports = { hodModel }
 
@@ -52,6 +52,7 @@ const StudLeaves_schema = mongoose.Schema(
 )
 let StudLeavesModel = mongoose.model("Stud_leaves", StudLeaves_schema)
 module.exports = { StudLeavesModel }
+
 
 const FacultyLeaves_schema = mongoose.Schema(
     {
