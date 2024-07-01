@@ -205,7 +205,7 @@ app.get("/viewFaculty", (req, res) => {
 
 app.post("/deletestudent",(req,res)=>{
     let input=req.body
-    FacultyLeavesModel.findByIdAndDelete(input._id).then(
+    StudLeavesModel.findByIdAndDelete(input._id).then(
         (response)=>{
             res.json({"status":"success"})
             }
@@ -219,7 +219,7 @@ app.post("/deletestudent",(req,res)=>{
     
 app.post("/deletefaculty",(req,res)=>{
     let input=req.body
-    StudLeavesModel.findByIdAndDelete(input._id).then(
+    FacultyLeavesModel.findByIdAndDelete(input._id).then(
         (response)=>{
             res.json({"status":"success"})
             }
